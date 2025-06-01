@@ -30,7 +30,9 @@ def main():
             for chunk in client.chat.completions.create(
                 model="deepseek-chat",
                 messages=st.session_state.messages,
-                stream=True
+                stream=True,
+                max_tokens=8192,
+                temperature=1
             ):
                 content = chunk.choices[0].delta.content or ""
                 full_response += content
